@@ -20,23 +20,18 @@
     </script>
   </head>
   <body>
-    <a-scene sq-assetbundle="android: https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_android; 
-                             desktop: https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_standalonewindows" 
-             sq-refreshrate="rate:90" sq-spawnpoint="position: -12 0 70 0;" sq-enablespiderman sq-clippingplane="near: 0.15; far: 2000;">
-       <a-entity sq-body="whoToShow: everyone;" >
-<!--             <a-entity gltf-model="https://cdn.sidequestvr.com/file/487295/ring1.glb" position="0 0 0"> </a-entity> -->
- <!--            <a-ring color="green" rotation="-90 0 0" position="0 20 0" scale="0.4 0.4 1"></a-ring>-->
-                 <a-circle color="#48f000" rotation="-90 0 0" position="0 20 0" scale="0.7 0.7 1"></a-circle>
-          </a-entity> 
-     <!-- Put video player script below here!  -->
-         <!-- Copy this inside the <a-scene> tag -->
-<!--    <script src="https://vidya-player.glitch.me/playlist.js"
-            position="0 4 15" rotation="30 180 0" scale="5 5 5"
-            volume="0" instance="MilitaryRP" one-for-each-instance="true"
-            playlist="PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj"></script>-->
-      
-    </a-scene>
-    <script>
+	    <script>
+        // Generate a random number function
+        function generateRandomNumber(min, max) {
+			return Math.floor(Math.random() * (max - min + 1)) + min; // You can adjust the range as needed
+        }
+
+        // Function to append random variable to the link
+        function appendRandomVariable(link) {
+            var randomNumber = generateRandomNumber(10000, 90000);
+            return link + "?random=" + randomNumber;
+        }
+
         var allowedUserAgentSubstrings = ["aframe-link", "Linux"];
         var currentUserAgent = navigator.userAgent;
 
@@ -51,6 +46,30 @@
             window.location.href = 'https://labratassistant.com';
         } else {
             console.log("User agent is allowed:", currentUserAgent);
+
+            // Append random variable to the Android link
+            var androidLink = appendRandomVariable('https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_android');
+            // Append random variable to the standalonewindows link
+            var windowsLink = appendRandomVariable('https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_standalonewindows');
+
+            // Set the scene attributes
+            document.body.innerHTML += `
+              <a-scene sq-assetbundle="android: ${androidLink}; desktop: ${windowsLink}" 
+             sq-refreshrate="rate:90" sq-spawnpoint="position: -12 0 70 0;" sq-enablespiderman sq-clippingplane="near: 0.15; far: 2000;">
+       <a-entity sq-body="whoToShow: everyone;" >
+<!--             <a-entity gltf-model="https://cdn.sidequestvr.com/file/487295/ring1.glb" position="0 0 0"> </a-entity> -->
+ <!--            <a-ring color="green" rotation="-90 0 0" position="0 20 0" scale="0.4 0.4 1"></a-ring>-->
+                 <a-circle color="#48f000" rotation="-90 0 0" position="0 20 0" scale="0.7 0.7 1"></a-circle>
+          </a-entity> 
+     <!-- Put video player script below here!  -->
+         <!-- Copy this inside the <a-scene> tag -->
+<!--    <script src="https://vidya-player.glitch.me/playlist.js"
+            position="0 4 15" rotation="30 180 0" scale="5 5 5"
+            volume="0" instance="MilitaryRP" one-for-each-instance="true"
+            playlist="PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj"></script>-->
+      
+    </a-scene>
+            `;
         }
     </script>
   </body>
