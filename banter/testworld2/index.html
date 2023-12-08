@@ -13,20 +13,17 @@
                 var sceneEl = this.el;
 
                 function checkSteamVR() {
-                    setTimeout(function() {
-                        if (typeof SteamVR !== 'undefined' && SteamVR.connected) {
-                            console.log('SteamVR headset is connected.');
-                        } else {
-                            console.log('SteamVR headset is not connected.');
-                        }
-                    }, 15000); // Adjust the delay as needed
+                    if (typeof SteamVR !== 'undefined' && SteamVR.connected) {
+                        console.log('SteamVR headset is connected.');
+                    } else {
+                        console.log('SteamVR headset is not connected.');
+                    }
                 }
 
-                // Check SteamVR headset connection status on scene enter VR
-                sceneEl.addEventListener('enter-vr', checkSteamVR);
-
-                // Check SteamVR headset immediately when the component is initialized
-                checkSteamVR();
+                // Check SteamVR headset connection status when the scene is fully loaded
+                sceneEl.addEventListener('loaded', function () {
+                    checkSteamVR();
+                });
             }
         });
     </script>
