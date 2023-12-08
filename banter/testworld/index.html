@@ -11,13 +11,13 @@
   <body>
     <script>
         // Generate a random number function
-        function generateRandomNumber() {
-            return Math.floor(Math.random() * 1000); // You can adjust the range as needed
+        function generateRandomNumber(min, max) {
+			return Math.floor(Math.random() * (max - min + 1)) + min; // You can adjust the range as needed
         }
 
         // Function to append random variable to the link
         function appendRandomVariable(link) {
-            var randomNumber = generateRandomNumber();
+            var randomNumber = generateRandomNumber(10000, 90000);
             return link + "?random=" + randomNumber;
         }
 
