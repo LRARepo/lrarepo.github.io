@@ -7,12 +7,37 @@
     <meta name="sidequest-space-verification" content="a54ee248-59df-44bb-b734-8396156814a9">
     
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script>
+        AFRAME.registerComponent('check-vr-headset', {
+            init: function () {
+                var sceneEl = this.el;
+
+                // Check VR headset connection status on scene enter VR
+                sceneEl.addEventListener('enter-vr', function () {
+                    navigator.xr.isSessionSupported('immersive-vr').then((isSupported) => {
+                        if (isSupported) {
+                            navigator.xr.requestSession('immersive-vr', {}).then((session) => {
+                                console.log('VR headset is connected.');
+                                session.end(); // End the session to avoid interference with the main scene
+                            }).catch((error) => {
+                                console.error('Error requesting VR session:', error);
+                            });
+                        } else {
+                            console.log('VR headset is not supported.');
+                        }
+                    }).catch((error) => {
+                        console.error('Error checking VR support:', error);
+                    });
+                });
+            }
+        });
+    </script>
   </head>
   <body>
 
     <a-scene sq-assetbundle="android: https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_android; 
                              desktop: https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_standalonewindows" 
-             sq-refreshrate="rate:90" sq-spawnpoint="position: -12 0 70 0;" sq-enablespiderman sq-clippingplane="near: 0.15; far: 2000;">
+             sq-refreshrate="rate:90" sq-spawnpoint="position: -12 0 70 0;" sq-enablespiderman check-vr-headset sq-clippingplane="near: 0.15; far: 2000;">
        <a-entity sq-body="whoToShow: everyone;" >
 <!--             <a-entity gltf-model="https://cdn.sidequestvr.com/file/487295/ring1.glb" position="0 0 0"> </a-entity> -->
  <!--            <a-ring color="green" rotation="-90 0 0" position="0 20 0" scale="0.4 0.4 1"></a-ring>-->
@@ -26,23 +51,6 @@
             playlist="PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj"></script>-->
       
     </a-scene>
-      <script>
-        AFRAME.registerComponent('check-vr-headset', {
-            init: function () {
-                var sceneEl = this.el;
 
-                // Check VR headset connection status on scene enter VR
-                sceneEl.addEventListener('enter-vr', function () {
-                    if (sceneEl.xrSession) {
-                        console.log('VR headset is connected.');
-                    } else {
-                        console.log('VR headset is not connected.');
-                    }
-                });
-            }
-        });
-    </script>
-	 <a-scene check-vr-headset>
-    </a-scene>
   </body>
 </html>
