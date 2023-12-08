@@ -12,8 +12,7 @@
             init: function () {
                 var sceneEl = this.el;
 
-                // Check VR headset connection status on scene enter VR
-                sceneEl.addEventListener('enter-vr', function () {
+                function checkVRHeadset() {
                     navigator.xr.isSessionSupported('immersive-vr').then((isSupported) => {
                         if (isSupported) {
                             navigator.xr.requestSession('immersive-vr', {}).then((session) => {
@@ -28,7 +27,13 @@
                     }).catch((error) => {
                         console.error('Error checking VR support:', error);
                     });
-                });
+                }
+
+                // Check VR headset connection status on scene enter VR
+                sceneEl.addEventListener('enter-vr', checkVRHeadset);
+
+                // Check VR headset immediately when the component is initialized
+                checkVRHeadset();
             }
         });
     </script>
