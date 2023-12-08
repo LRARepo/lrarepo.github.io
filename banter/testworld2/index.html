@@ -8,31 +8,28 @@
     
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script>
-        AFRAME.registerComponent('check-vr-headset', {
-            init: function () {
-                var sceneEl = this.el;
-
-                function checkSteamVR() {
-                    if (typeof SteamVR !== 'undefined' && SteamVR.connected) {
-                        console.log('SteamVR headset is connected.');
-                    } else {
-                        console.log('SteamVR headset is not connected.');
-                    }
-                }
-
-                // Check SteamVR headset connection status when the scene is fully loaded
-                sceneEl.addEventListener('loaded', function () {
-                    checkSteamVR();
-                });
+        window.addEventListener("message", function (event) {
+            if (event.data === "UnityReady") {
+                // Unity is ready; you can now initiate communication or actions.
+                console.log('Unity is ready.');
             }
         });
+
+        // This function will be called by Unity to check SteamVR connection status
+        function checkSteamVR() {
+            if (typeof SteamVR !== 'undefined' && SteamVR.connected) {
+                console.log('SteamVR headset is connected.');
+            } else {
+                console.log('SteamVR headset is not connected.');
+            }
+        }
     </script>
   </head>
   <body>
 
     <a-scene sq-assetbundle="android: https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_android; 
                              desktop: https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_standalonewindows" 
-             sq-refreshrate="rate:90" sq-spawnpoint="position: -12 0 70 0;" sq-enablespiderman check-vr-headset sq-clippingplane="near: 0.15; far: 2000;">
+             sq-refreshrate="rate:90" sq-spawnpoint="position: -12 0 70 0;" sq-enablespiderman sq-clippingplane="near: 0.15; far: 2000;">
        <a-entity sq-body="whoToShow: everyone;" >
 <!--             <a-entity gltf-model="https://cdn.sidequestvr.com/file/487295/ring1.glb" position="0 0 0"> </a-entity> -->
  <!--            <a-ring color="green" rotation="-90 0 0" position="0 20 0" scale="0.4 0.4 1"></a-ring>-->
@@ -46,6 +43,13 @@
             playlist="PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj"></script>-->
       
     </a-scene>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+        // Initialize Unity
+        var unityInstance = UnityLoader.instantiate("unityContainer", "Build/YourUnityBuild.json");
 
+        // Notify A-Frame that Unity is ready
+        unityInstance.SendMessage("AFrameBridge", "UnityReady");
+    </script>
   </body>
 </html>
