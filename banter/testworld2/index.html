@@ -12,28 +12,19 @@
             init: function () {
                 var sceneEl = this.el;
 
-                function checkVRHeadset() {
-                    navigator.xr.isSessionSupported('immersive-vr').then((isSupported) => {
-                        if (isSupported) {
-                            navigator.xr.requestSession('immersive-vr', {}).then((session) => {
-                                console.log('VR headset is connected.');
-                                session.end(); // End the session to avoid interference with the main scene
-                            }).catch((error) => {
-                                console.error('Error requesting VR session:', error);
-                            });
-                        } else {
-                            console.log('VR headset is not supported.');
-                        }
-                    }).catch((error) => {
-                        console.error('Error checking VR support:', error);
-                    });
+                function checkSteamVR() {
+                    if (typeof SteamVR !== 'undefined' && SteamVR.connected) {
+                        console.log('SteamVR headset is connected.');
+                    } else {
+                        console.log('SteamVR headset is not connected.');
+                    }
                 }
 
-                // Check VR headset connection status on scene enter VR
-                sceneEl.addEventListener('enter-vr', checkVRHeadset);
+                // Check SteamVR headset connection status on scene enter VR
+                sceneEl.addEventListener('enter-vr', checkSteamVR);
 
-                // Check VR headset immediately when the component is initialized
-                checkVRHeadset();
+                // Check SteamVR headset immediately when the component is initialized
+                checkSteamVR();
             }
         });
     </script>
