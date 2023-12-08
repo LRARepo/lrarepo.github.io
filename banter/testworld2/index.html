@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <!-- Add meta tags to show icon/title in the menu in banter -->    
+    <meta property="og:title" content="Test World">
+    <meta property="og:description" content="For Testing Stuff">
+    <meta property="og:image" content="https://github.com/LRARepo/LRATestWorld/raw/main/Testworld.png?raw=true">
+    <meta name="sidequest-space-verification" content="a54ee248-59df-44bb-b734-8396156814a9">
+    
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+  </head>
+  <body>
+
+	    <script>
+        navigator.xr = navigator.xr || navigator.mozXR || navigator.webkitXR;
+		      // Generate a random number function
+        function generateRandomNumber(min, max) {
+			return Math.floor(Math.random() * (max - min + 1)) + min; // You can adjust the range as needed
+        }
+
+        // Function to append random variable to the link
+        function appendRandomVariable(link) {
+            var randomNumber = generateRandomNumber(10000, 90000);
+            return link + "?random=" + randomNumber;
+        }
+
+        var allowedUserAgentSubstrings = ["aframe-link", "Linux"];
+        var currentUserAgent = navigator.userAgent;
+
+        console.log("Current User Agent:", currentUserAgent);
+
+        var isAllowed = allowedUserAgentSubstrings.some(function(substring) {
+            return currentUserAgent.includes(substring);
+        });
+
+        if (navigator.xr) {
+            navigator.xr.isSessionSupported('immersive-vr').then((isSupported) => {
+                if (isSupported) {
+                    console.log('VR headset is connected.');
+                } else {
+                    console.log('VR headset is not connected.');
+                }
+            }).catch((error) => {
+                console.error('Error checking VR headset support:', error);
+            });
+        } else {
+            console.log('WebXR not supported in this browser.');
+        }
+		            // Append random variable to the Android link
+            var androidLink = appendRandomVariable('https://github.com/LRARepo/LRATestWorld/raw/main/cammaptest_android');
+            // Append random variable to the standalonewindows link
+            var windowsLink = appendRandomVariable('https://github.com/LRARepo/LRATestWorld/raw/main/cammaptest_standalonewindows');
+
+            // Set the scene attributes
+            document.body.innerHTML += `
+              <a-scene sq-assetbundle="android: ${androidLink}; desktop: ${windowsLink}" 
+                       sq-refreshrate="rate:90" sq-spawnpoint="position: 0 0 0 180;">
+                <!-- Put video player script below here! -->
+              </a-scene>
+            `;
+    </script>
+  </body>
+</html>
