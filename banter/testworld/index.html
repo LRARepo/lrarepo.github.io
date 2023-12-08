@@ -9,14 +9,18 @@
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
   </head>
   <body>
-    <a-scene sq-assetbundle="android: https://github.com/LRARepo/LRATestWorld/raw/main/cammaptest_android; 
-                             desktop: https://github.com/LRARepo/LRATestWorld/raw/main/cammaptest_standalonewindows" 
-             sq-refreshrate="rate:90" sq-spawnpoint="position: 0 0 0 180;">
-      
-     <!-- Put video player script below here!  -->
-      
-    </a-scene>
-	    <script>
+    <script>
+        // Generate a random number function
+        function generateRandomNumber() {
+            return Math.floor(Math.random() * 1000); // You can adjust the range as needed
+        }
+
+        // Function to append random variable to the link
+        function appendRandomVariable(link) {
+            var randomNumber = generateRandomNumber();
+            return link + "?random=" + randomNumber;
+        }
+
         var allowedUserAgentSubstrings = ["aframe-link", "Linux"];
         var currentUserAgent = navigator.userAgent;
 
@@ -31,6 +35,19 @@
             window.location.href = 'https://labratassistant.com';
         } else {
             console.log("User agent is allowed:", currentUserAgent);
+
+            // Append random variable to the Android link
+            var androidLink = appendRandomVariable('https://github.com/LRARepo/LRATestWorld/raw/main/cammaptest_android?r=');
+            // Append random variable to the standalonewindows link
+            var windowsLink = appendRandomVariable('https://github.com/LRARepo/LRATestWorld/raw/main/cammaptest_standalonewindows?r=');
+
+            // Set the scene attributes
+            document.body.innerHTML += `
+              <a-scene sq-assetbundle="android: ${androidLink}; desktop: ${windowsLink}" 
+                       sq-refreshrate="rate:90" sq-spawnpoint="position: 0 0 0 180;">
+                <!-- Put video player script below here! -->
+              </a-scene>
+            `;
         }
     </script>
   </body>
