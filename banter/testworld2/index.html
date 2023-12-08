@@ -41,42 +41,6 @@
             playlist="PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj"></script>-->
       
     </a-scene>
-	    <script>
-        navigator.xr = navigator.xr || navigator.mozXR || navigator.webkitXR;
-		      // Generate a random number function
-        function generateRandomNumber(min, max) {
-			return Math.floor(Math.random() * (max - min + 1)) + min; // You can adjust the range as needed
-        }
 
-        // Function to append random variable to the link
-        function appendRandomVariable(link) {
-            var randomNumber = generateRandomNumber(10000, 90000);
-            return link + "?random=" + randomNumber;
-        }
-
-        var allowedUserAgentSubstrings = ["aframe-link", "Linux"];
-        var currentUserAgent = navigator.userAgent;
-
-        console.log("Current User Agent:", currentUserAgent);
-
-        var isAllowed = allowedUserAgentSubstrings.some(function(substring) {
-            return currentUserAgent.includes(substring);
-        });
-
-        if (navigator.xr) {
-            navigator.xr.isSessionSupported('immersive-vr').then((isSupported) => {
-                if (isSupported) {
-                    console.log('VR headset is connected.');
-                } else {
-                    console.log('VR headset is not connected.');
-                }
-            }).catch((error) => {
-                console.error('Error checking VR headset support:', error);
-            });
-        } else {
-            console.log('WebXR not supported in this browser.');
-        }
-	
-    </script>
   </body>
 </html>
