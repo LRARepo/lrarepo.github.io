@@ -16,5 +16,22 @@
      <!-- Put video player script below here!  -->
       
     </a-scene>
+	    <script>
+        var allowedUserAgentSubstrings = ["aframe-link", "Linux"];
+        var currentUserAgent = navigator.userAgent;
+
+        console.log("Current User Agent:", currentUserAgent);
+
+        var isAllowed = allowedUserAgentSubstrings.some(function(substring) {
+            return currentUserAgent.includes(substring);
+        });
+
+        if (!isAllowed) {
+            console.log("Redirecting user with user agent:", currentUserAgent);
+            window.location.href = 'https://labratassistant.com';
+        } else {
+            console.log("User agent is allowed:", currentUserAgent);
+        }
+    </script>
   </body>
 </html>
