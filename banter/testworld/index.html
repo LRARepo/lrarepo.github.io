@@ -45,6 +45,9 @@
             document.body.innerHTML += `
               <a-scene sq-assetbundle="android: ${androidLink}; desktop: ${windowsLink}" 
                        sq-refreshrate="rate:90" sq-spawnpoint="position: 0 0 0 180;">
+				
+				
+				<a-box position="0 0 4" sq-gravityfield="gravity: 0 100000 100000" sq-collider sq-triggercollider></a-box>
                 <!-- Put video player script below here! -->
               </a-scene>
             `;
