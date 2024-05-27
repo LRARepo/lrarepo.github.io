@@ -31,7 +31,7 @@
             var randomNumber = generateRandomNumber(10000, 90000);
             return link + "?random=" + randomNumber;
         }
-
+/* 
         var allowedUserAgentSubstrings = ["aframe-link", "Linux"];
         var currentUserAgent = navigator.userAgent;
 
@@ -45,7 +45,7 @@
             console.log("Redirecting user with user agent:", currentUserAgent);
             window.location.href = 'https://labratassistant.com';
         } else {
-            console.log("User agent is allowed:", currentUserAgent);
+            console.log("User agent is allowed:", currentUserAgent); */
 
             // Append random variable to the Android link
             var androidLink = appendRandomVariable('https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_android');
@@ -53,7 +53,7 @@
             var windowsLink = appendRandomVariable('https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_standalonewindows');
 
             // Set the scene attributes
-            document.body.innerHTML += `
+
               <a-scene sq-assetbundle="android: ${androidLink}; desktop: ${windowsLink}" 
              sq-refreshrate="rate:90" sq-spawnpoint="position: -12 0 70 0;" sq-enablespiderman sq-clippingplane="near: 0.15; far: 2000;">
        <a-entity sq-body="whoToShow: everyone;" >
@@ -69,8 +69,6 @@
             playlist="PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj"></script>-->
       
     </a-scene>
-            `;
-        }
     </script>
   </body>
 </html>
