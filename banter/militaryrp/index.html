@@ -35,6 +35,7 @@
             var androidLink = appendRandomVariable('https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_android');
             // Append random variable to the standalonewindows link
             var windowsLink = appendRandomVariable('https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_standalonewindows');
+	console.log("Current User Agent:", currentUserAgent);
 	    </script>
 /* 
         var allowedUserAgentSubstrings = ["aframe-link", "Linux"];
@@ -59,7 +60,7 @@
 
             // Set the scene attributes
 
-              <a-scene sq-assetbundle="android: ${androidLink}; desktop: ${windowsLink}" 
+              <a-scene sq-assetbundle="android: https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_android; desktop: https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_standalonewindows" 
              sq-refreshrate="rate:90" sq-spawnpoint="position: -12 0 70 0;" sq-enablespiderman sq-clippingplane="near: 0.15; far: 2000;">
        <a-entity sq-body="whoToShow: everyone;" >
 <!--             <a-entity gltf-model="https://cdn.sidequestvr.com/file/487295/ring1.glb" position="0 0 0"> </a-entity> -->
