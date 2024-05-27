@@ -1,3 +1,4 @@
+
 <html>
   <head>
 
@@ -7,7 +8,7 @@
     <meta property="og:image" content="https://github.com/LRARepo/MRP/raw/main/MilRP.jpg">
     <meta name="sidequest-space-verification" content="26a57823-c38a-4845-a7a6-695e191a7f92">
 
-    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script>
      function multispaw() {
         const spawpoints = [];
@@ -31,14 +32,8 @@
             var randomNumber = generateRandomNumber(10000, 90000);
             return link + "?random=" + randomNumber;
         }
-	            // Append random variable to the Android link
-            var androidLink = appendRandomVariable('https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_android');
-            // Append random variable to the standalonewindows link
-            var windowsLink = appendRandomVariable('https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_standalonewindows');
-	console.log("Current User Agent:", currentUserAgent);
-	    </script>
-/* 
-        var allowedUserAgentSubstrings = ["aframe-link", "Linux"];
+
+        var allowedUserAgentSubstrings = ["banter-link", "aframe-link", "Linux"];
         var currentUserAgent = navigator.userAgent;
 
         console.log("Current User Agent:", currentUserAgent);
@@ -51,7 +46,7 @@
             console.log("Redirecting user with user agent:", currentUserAgent);
             window.location.href = 'https://labratassistant.com';
         } else {
-            console.log("User agent is allowed:", currentUserAgent); */
+            console.log("User agent is allowed:", currentUserAgent);
 
             // Append random variable to the Android link
             var androidLink = appendRandomVariable('https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_android');
@@ -59,8 +54,8 @@
             var windowsLink = appendRandomVariable('https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_standalonewindows');
 
             // Set the scene attributes
-
-              <a-scene sq-assetbundle="android: https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_android; desktop: https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_standalonewindows" 
+            document.body.innerHTML += `
+              <a-scene sq-assetbundle="android: ${androidLink}; desktop: ${windowsLink}" 
              sq-refreshrate="rate:90" sq-spawnpoint="position: -12 0 70 0;" sq-enablespiderman sq-clippingplane="near: 0.15; far: 2000;">
        <a-entity sq-body="whoToShow: everyone;" >
 <!--             <a-entity gltf-model="https://cdn.sidequestvr.com/file/487295/ring1.glb" position="0 0 0"> </a-entity> -->
@@ -75,6 +70,8 @@
             playlist="PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj"></script>-->
       
     </a-scene>
-
+            `;
+        }
+    </script>
   </body>
 </html>
