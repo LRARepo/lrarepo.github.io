@@ -35,17 +35,17 @@
         var allowedUserAgentSubstrings = ["aframe-link", "Linux"];
         var currentUserAgent = navigator.userAgent;
 
-        console.log("Current User Agent:", currentUserAgent);
-
-        var isAllowed = allowedUserAgentSubstrings.some(function(substring) {
-            return currentUserAgent.includes(substring);
-        });
-
-        if (!isAllowed) {
-            console.log("Redirecting user with user agent:", currentUserAgent);
-            window.location.href = 'https://labratassistant.com';
-        } else {
-            console.log("User agent is allowed:", currentUserAgent);
+//        console.log("Current User Agent:", currentUserAgent);
+//
+//        var isAllowed = allowedUserAgentSubstrings.some(function(substring) {
+//            return currentUserAgent.includes(substring);
+//        });
+//
+//        if (!isAllowed) {
+//            console.log("Redirecting user with user agent:", currentUserAgent);
+//            window.location.href = 'https://labratassistant.com';
+//        } else {
+//            console.log("User agent is allowed:", currentUserAgent);
 
             // Append random variable to the Android link
             var androidLink = appendRandomVariable('https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_android');
