@@ -37,31 +37,8 @@
     </script>
   </head>
   <body>
-<script>
-    // Generate a random number function
-      function generateRandomNumber(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min; // You can adjust the range as needed
-      }
 
-      // Function to append random variable to the link
-      function appendRandomVariable(link) {
-          var randomNumber = generateRandomNumber(10000, 90000);
-          return link + "?random=" + randomNumber;
-      }
-      function changeLinks() {
-          const worldLink = document.getElementById("world-link")
-          // Append random variable to the Android link
-          var androidLink = appendRandomVariable('https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_android');
-          // Append random variable to the standalonewindows link
-          var windowsLink = appendRandomVariable('https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_standalonewindows');
-
-          // Set the scene attributes
-          worldLink.setAttribute("sq-assetbundle",'android:https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_android; desktop:https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_standalonewindows;');
-      }
-      changeLinks()
-</script>
-
-  <a-scene id="world-link" sq-assetbundle=""
+  <a-scene sq-assetbundle="android:https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_android; desktop:https://github.com/LRARepo/MRP/raw/main/15mapanimationfuck_standalonewindows;"
         sq-refreshrate="rate:90" sq-spawnpoint="position: -12 0 70 0;" sq-enablespiderman sq-clippingplane="near: 0.15; far: 2000;">
    <a-circle sq-body color="#48f000" rotation="-90 0 0" position="0 20 0" scale="0.7 0.7 1"></a-circle>
   </a-scene>
