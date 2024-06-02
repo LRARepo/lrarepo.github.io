@@ -57,11 +57,7 @@
             document.body.innerHTML += `
               <a-scene sq-assetbundle="android: ${androidLink}; desktop: ${windowsLink}" 
              sq-refreshrate="rate:90" sq-spawnpoint="position: -12 0 70 0;" sq-enablespiderman sq-clippingplane="near: 0.15; far: 2000;">
-       <a-entity sq-body="whoToShow: everyone;" >
-<!--             <a-entity gltf-model="https://cdn.sidequestvr.com/file/487295/ring1.glb" position="0 0 0"> </a-entity> -->
- <!--            <a-ring color="green" rotation="-90 0 0" position="0 20 0" scale="0.4 0.4 1"></a-ring>-->
-                 <a-circle color="#48f000" rotation="-90 0 0" position="0 20 0" scale="0.7 0.7 1"></a-circle>
-          </a-entity> 
+     <a-circle sq-body color="#48f000" rotation="-90 0 0" position="0 20 0" scale="0.7 0.7 1"></a-circle>
      <!-- Put video player script below here!  -->
          <!-- Copy this inside the <a-scene> tag -->
 <!--    <script src="https://vidya-player.glitch.me/playlist.js"
