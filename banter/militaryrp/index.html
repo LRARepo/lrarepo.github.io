@@ -35,8 +35,6 @@
       }
       window.loadDoneCallback = () => multispaw();
     </script>
-  </head>
-  <body>
 <script>
     // Generate a random number function
       function generateRandomNumber(min, max) {
@@ -59,6 +57,9 @@
           // Set the scene attributes
          worldLink.setAttribute("sq-assetbundle","android: " + ${androidLink} + "; desktop:" + ${windowsLink})
 </script>
+  </head>
+  <body>
+
 
   <a-scene id="world-link"
         sq-refreshrate="rate:90" sq-spawnpoint="position: -12 0 70 0;" sq-enablespiderman sq-clippingplane="near: 0.15; far: 2000;">
